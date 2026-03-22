@@ -20,7 +20,7 @@ export default function LandingPage() {
           className="text-lg text-warm-200"
           style={{ fontFamily: "var(--font-serif)" }}
         >
-          Stem Studio
+          Swara Mixer
         </span>
         <div className="flex items-center gap-4">
           <Link

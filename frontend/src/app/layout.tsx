@@ -4,7 +4,7 @@ import { dark } from "@clerk/themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Stem Studio",
+  title: "Swara Mixer",
   description: "Online mixing studio powered by Meta Demucs",
 };
 

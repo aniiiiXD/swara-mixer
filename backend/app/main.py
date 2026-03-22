@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import jobs, stems, search
 from app.config import CORS_ORIGINS
 
-app = FastAPI(title="Stem Studio API")
+app = FastAPI(title="Swara Mixer API")
 
 app.add_middleware(
     CORSMiddleware,

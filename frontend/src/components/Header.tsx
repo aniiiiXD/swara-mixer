@@ -20,7 +20,7 @@ export function Header({ songTitle, sessionId, showNewTrack }: HeaderProps) {
           className="text-lg text-warm-200 hover:text-warm-100 transition-colors"
           style={{ fontFamily: "var(--font-serif)" }}
         >
-          Stem Studio
+          Swara Mixer
         </a>
         {songTitle && (
           <>

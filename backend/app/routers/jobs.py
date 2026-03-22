@@ -13,7 +13,7 @@ from app.services.separator import separate_stems
 from app.services.exporter import mixdown
 from app.config import STEMS_DIR, DEMUCS_MODEL
 
-log = logging.getLogger("stem-studio")
+log = logging.getLogger("swara-mixer")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(message)s", datefmt="%H:%M:%S")
 
 router = APIRouter()
