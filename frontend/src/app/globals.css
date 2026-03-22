@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-warm-50: #faf8f5;
+  --color-warm-100: #f3efe8;
+  --color-warm-200: #e8e0d4;
+  --color-warm-300: #d4c9b8;
+  --color-warm-400: #b5a48e;
+  --color-warm-500: #96836a;
+  --color-warm-600: #7a6b55;
+  --color-warm-700: #5c5040;
+  --color-warm-800: #3d3530;
+  --color-warm-900: #2a2420;
+  --color-warm-950: #1a1614;
+
+  --color-console: #1e1b18;
+  --color-console-surface: #252220;
+  --color-console-raised: #2e2a27;
+  --color-console-border: #3a3530;
+  --color-console-highlight: #4a4338;
+
+  --color-amber-accent: #c8956c;
+  --color-amber-glow: #d4a574;
+  --color-amber-dim: #8b6e50;
+
+  --color-stem-vocals: #c2785c;
+  --color-stem-drums: #7c8ea6;
+  --color-stem-bass: #8b9e72;
+  --color-stem-other: #b09470;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-warm-950);
+  color: var(--color-warm-200);
+  font-family: var(--font-sans);
+}
+
+/* Warm, subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-console-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-600);
+}
+
+/* Range input — completely custom */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+/* Subtle noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* VU meter animation */
+@keyframes vu-flicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Gentle fade in */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Console groove — inset channel strip */
+.console-groove {
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* Raised console element */
+.console-raised {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Button press effect */
+.btn-press {
+  transition: all 0.1s ease;
+}
+.btn-press:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Warm glow effect for active elements */
+.warm-glow {
+  box-shadow: 0 0 20px rgba(200, 149, 108, 0.1);
+}
+
+/* Wavesurfer overrides */
+.waveform-container wave {
+  border-radius: 4px;
+  overflow: hidden;
+}

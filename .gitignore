@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Storage (runtime data, keep .gitkeep)
+storage/downloads/*
+storage/stems/*
+storage/exports/*
+!storage/**/.gitkeep
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Environment
+.env
+.env.local
+.env*.local
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Vercel
+.vercel/
+
+# Bun
+frontend/bun.lockb
