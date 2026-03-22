@@ -27,16 +27,16 @@ export default function AppPage() {
             className="text-[11px] tracking-[0.35em] uppercase text-warm-500"
             style={{ fontFamily: "var(--font-sans)" }}
           >
-            Audio Stem Separation
+            Karaoke Maker
           </p>
           <h1
             className="text-4xl md:text-5xl tracking-tight text-warm-100"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            What are we mixing?
+            Pick a song
           </h1>
           <p className="text-warm-500 text-sm max-w-sm mx-auto leading-relaxed">
-            Search for a song below. We&apos;ll separate it into stems and open the mixing console.
+            Search for any track. We&apos;ll remove the vocals and give you a karaoke-ready instrumental.
           </p>
         </div>
 

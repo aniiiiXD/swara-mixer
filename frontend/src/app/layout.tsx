@@ -4,8 +4,8 @@ import { dark } from "@clerk/themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Swara Mixer",
-  description: "Online mixing studio powered by Meta Demucs",
+  title: "Karaoke Maker",
+  description: "AI-powered karaoke maker — remove vocals from any song instantly",
 };
 
 export default function RootLayout({

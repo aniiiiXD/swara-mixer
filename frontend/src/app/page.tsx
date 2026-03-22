@@ -20,7 +20,7 @@ export default function LandingPage() {
           className="text-lg text-warm-200"
           style={{ fontFamily: "var(--font-serif)" }}
         >
-          Swara Mixer
+          Karaoke Maker
         </span>
         <div className="flex items-center gap-4">
           <Link
@@ -44,21 +44,21 @@ export default function LandingPage() {
           <p
             className="text-[11px] tracking-[0.4em] uppercase text-warm-500"
           >
-            AI-Powered Audio Separation
+            AI-Powered Karaoke Studio
           </p>
 
           <h1
             className="text-5xl md:text-7xl tracking-tight text-warm-100 leading-[1.1]"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            Split any song.
+            Remove vocals.
             <br />
-            <span className="text-warm-400">Mix it your way.</span>
+            <span className="text-warm-400">Sing your heart out.</span>
           </h1>
 
           <p className="text-warm-500 text-lg max-w-md mx-auto leading-relaxed">
-            Search YouTube for any track. Demucs AI isolates vocals, drums, bass,
-            and instruments. Remix everything in your browser.
+            Search any song. AI strips the vocals in seconds.
+            Get a clean instrumental track — or remix stems however you want.
           </p>
 
           <div className="pt-4">
@@ -80,8 +80,8 @@ export default function LandingPage() {
         {/* Feature grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mt-24 w-full animate-fade-up delay-3">
           <FeatureCard
-            title="Search & Separate"
-            description="Find any song on YouTube. Meta's Demucs model splits it into 4 stems in under a minute."
+            title="Search Any Song"
+            description="Find any track on YouTube. AI strips the vocals and isolates drums, bass, and instruments."
             icon={
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -89,8 +89,8 @@ export default function LandingPage() {
             }
           />
           <FeatureCard
-            title="Mix in Browser"
-            description="Volume, pan, solo, mute for every stem. Real-time Web Audio playback with waveform display."
+            title="Karaoke Ready"
+            description="Mute the vocals for instant karaoke. Or solo them to learn lyrics and melodies."
             icon={
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
@@ -98,8 +98,8 @@ export default function LandingPage() {
             }
           />
           <FeatureCard
-            title="Export Your Mix"
-            description="Dial in your mix and export a final WAV file. Vocals-only, instrumental, or your custom blend."
+            title="Export & Share"
+            description="Download your instrumental as WAV. Mix stems however you want — your track, your rules."
             icon={
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

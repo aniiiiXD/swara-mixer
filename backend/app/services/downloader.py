@@ -7,7 +7,7 @@ from pathlib import Path
 
 from app.config import DOWNLOADS_DIR
 
-log = logging.getLogger("swara-mixer")
+log = logging.getLogger("karaoke-maker")
 
 
 async def download_audio(url: str, job_id: str, on_progress=None) -> tuple[Path, str | None, float | None]:
