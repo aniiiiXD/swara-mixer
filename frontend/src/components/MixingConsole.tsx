@@ -83,7 +83,7 @@ export function MixingConsole({ jobId, songTitle }: { jobId: string; songTitle?:
   }
 
   return (
-    <div className="flex flex-col gap-3 w-full max-w-6xl mx-auto">
+    <div className="flex flex-col gap-3 w-full">
       {/* Song title + controls */}
       {songTitle && (
         <div className="mb-2">

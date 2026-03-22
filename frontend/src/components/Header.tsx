@@ -12,7 +12,7 @@ export function Header({ songTitle, sessionId, showNewTrack }: HeaderProps) {
   const { isSignedIn } = useAuth();
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full relative z-10">
+    <header className="flex items-center justify-between px-6 py-4 w-full relative z-10">
       {/* Left: Logo / Home */}
       <div className="flex items-center gap-4">
         <a

@@ -55,7 +55,7 @@ export default function StudioPage() {
       />
 
       {/* Content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 pb-8 relative">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 pb-6 relative">
         {phase === "processing" && (
           <div className="animate-fade-up">
             <ProcessingStatus
