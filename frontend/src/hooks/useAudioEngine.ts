@@ -24,6 +24,7 @@ export function useAudioEngine(jobId: string | null) {
   const [duration, setDuration] = useState(0);
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const playingRef = useRef(false);
   const animFrameRef = useRef<number>(0);
 
   // Initialize engine
@@ -31,10 +32,29 @@ export function useAudioEngine(jobId: string | null) {
     const engine = createEngine();
     engineRef.current = engine;
     return () => {
+      playingRef.current = false;
       cancelAnimationFrame(animFrameRef.current);
       destroyEngine(engine);
       engineRef.current = null;
     };
+  }, []);
+
+  // Persistent animation loop — reads from ref, not state
+  const tick = useCallback(() => {
+    const engine = engineRef.current;
+    if (!engine || !playingRef.current) return;
+
+    const t = getCurrentTime(engine);
+    if (t >= engine.duration) {
+      engineStop(engine);
+      playingRef.current = false;
+      setIsPlaying(false);
+      setCurrentTime(0);
+      return;
+    }
+
+    setCurrentTime(t);
+    animFrameRef.current = requestAnimationFrame(tick);
   }, []);
 
   // Load stems when jobId is set
@@ -54,37 +74,23 @@ export function useAudioEngine(jobId: string | null) {
       .finally(() => setLoading(false));
   }, [jobId]);
 
-  // Animation frame for time updates
-  const updateTime = useCallback(() => {
-    const engine = engineRef.current;
-    if (engine && engine.isPlaying) {
-      const t = getCurrentTime(engine);
-      setCurrentTime(t);
-      if (t >= engine.duration) {
-        engineStop(engine);
-        setIsPlaying(false);
-        setCurrentTime(0);
-      } else {
-        animFrameRef.current = requestAnimationFrame(updateTime);
-      }
-    }
-  }, []);
-
   const play = useCallback(() => {
     const engine = engineRef.current;
-    if (!engine) return;
+    if (!engine || playingRef.current) return;
     if (engine.context.state === "suspended") {
       engine.context.resume();
     }
     enginePlay(engine);
+    playingRef.current = true;
     setIsPlaying(true);
-    animFrameRef.current = requestAnimationFrame(updateTime);
-  }, [updateTime]);
+    animFrameRef.current = requestAnimationFrame(tick);
+  }, [tick]);
 
   const pause = useCallback(() => {
     const engine = engineRef.current;
-    if (!engine) return;
+    if (!engine || !playingRef.current) return;
     enginePause(engine);
+    playingRef.current = false;
     setIsPlaying(false);
     cancelAnimationFrame(animFrameRef.current);
     setCurrentTime(getCurrentTime(engine));
@@ -94,6 +100,7 @@ export function useAudioEngine(jobId: string | null) {
     const engine = engineRef.current;
     if (!engine) return;
     engineStop(engine);
+    playingRef.current = false;
     setIsPlaying(false);
     cancelAnimationFrame(animFrameRef.current);
     setCurrentTime(0);
@@ -103,13 +110,16 @@ export function useAudioEngine(jobId: string | null) {
     (time: number) => {
       const engine = engineRef.current;
       if (!engine) return;
+      const wasPlaying = playingRef.current;
       engineSeek(engine, time);
       setCurrentTime(time);
-      if (engine.isPlaying) {
-        animFrameRef.current = requestAnimationFrame(updateTime);
+      if (wasPlaying && playingRef.current) {
+        // engineSeek pauses + plays internally, restart the tick loop
+        cancelAnimationFrame(animFrameRef.current);
+        animFrameRef.current = requestAnimationFrame(tick);
       }
     },
-    [updateTime]
+    [tick]
   );
 
   const updateMix = useCallback((mixState: MixState) => {
