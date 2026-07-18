@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "harmonica-ai"
+version = "0.1.0"
+description = "Play a software harmonica with your keyboard, hand gestures, or singing voice — then clean it up and generate melodies with ML."
+readme = "README.md"
+requires-python = ">=3.9,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "Aniruddh", email = "aniruddh302004@gmail.com" }]
+keywords = ["harmonica", "music", "pitch-detection", "gesture", "midi", "ml"]
+
+dependencies = [
+    "numpy",
+    "pyfluidsynth",
+    "sounddevice",
+    "matplotlib",
+    "pygame",
+    "opencv-python",
+    "mediapipe",
+]
+
+[project.scripts]
+harmonica-keyboard   = "harmonica.apps.keyboard:main"
+harmonica-gestures   = "harmonica.apps.gesture_play:main"
+harmonica-sing       = "harmonica.apps.sing:main"
+harmonica-transcribe = "harmonica.apps.transcribe:main"
+harmonica-refine     = "harmonica.apps.refine:main"
+
+[tool.setuptools.packages.find]
+include = ["harmonica*"]

@@ -1,0 +1,8 @@
+matplotlib==3.11.0
+mediapipe==0.10.35
+numpy==2.4.6
+opencv-contrib-python==5.0.0.93
+opencv-python==5.0.0.93
+pyfluidsynth==1.4.0
+pygame==2.6.1
+sounddevice==0.5.5

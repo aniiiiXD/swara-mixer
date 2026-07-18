@@ -1,0 +1,19 @@
+# virtual env
+.venv/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# large downloadable assets (fetch with scripts/download_assets.sh)
+assets/soundfonts/*.sf2
+assets/models/*.task
+
+# user recordings & generated output
+recordings/
+
+# os
+.DS_Store
