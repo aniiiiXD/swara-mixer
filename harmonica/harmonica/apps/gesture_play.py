@@ -23,9 +23,9 @@ import time
 
 import cv2
 
-from ..core import layout
+from stemcore.instruments import harmonica as layout
 from ..vision.gestures import HandReader
-from ..core.synth import HarmonicaSynth
+from stemcore.render.realtime import RealtimeSynth as HarmonicaSynth
 from ..paths import SOUNDFONT
 
 # ---- TUNING -------------------------------------------------------------

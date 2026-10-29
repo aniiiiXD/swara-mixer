@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stemcore"
+version = "0.1.0"
+description = "Shared music engine for stem-studio: ingest, stem separation, pitch, transcription, tempo, render, scoring, and note-grammar ML — the reusable core beneath coach/piano/harmonica."
+readme = "README.md"
+requires-python = ">=3.9,<3.13"
+license = { text = "MIT" }
+
+# Base install is intentionally light (numpy only) so a lightweight consumer
+# like the harmonica desktop app doesn't drag in torch. Pull only the extras
+# a given module needs.
+dependencies = ["numpy"]
+
+[project.scripts]
+stemcore-analyze = "stemcore.pipeline:main"
+
+[project.optional-dependencies]
+ingest   = ["yt-dlp[default]>=2026.8.19"]
+audio    = ["soundfile", "librosa"]                       # file loading, pyin, dynamics, scoring
+stems    = ["demucs>=4", "torch>=2.6", "torchaudio", "torchcodec", "soundfile"]
+poly     = ["basic-pitch>=0.4", "onnxruntime", "pretty_midi",
+            "transformers>=4.40", "torch>=2.6", "essentia", "setuptools<81"]
+realtime = ["pyfluidsynth"]                               # live synth playback
+render   = ["pretty_midi", "soundfile"]                   # offline notes->wav (needs `fluidsynth` binary)
+viz      = ["matplotlib"]
+player   = ["pygame"]                                     # the live pitch player window
+# the full URL -> vocals -> pitch -> player pipeline, self-contained:
+analyze  = ["stemcore[ingest,audio,stems,viz,player]"]
+all      = ["stemcore[ingest,audio,stems,poly,realtime,render,viz,player]"]
+
+[tool.setuptools.packages.find]
+include = ["stemcore*"]

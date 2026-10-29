@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Merged into the generated Info.plist by the Tauri bundler. -->
+<plist version="1.0">
+  <dict>
+    <!-- Shown in the macOS permission prompt. Live pitch tracking is the whole
+         point of the coach, so without this key the app is dead on arrival:
+         getUserMedia fails silently and the mic prompt never appears. -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Tonic listens to your voice to track pitch and score your singing. Audio is analysed on your Mac and never leaves it.</string>
+
+    <!-- The backend runs on 127.0.0.1 over plain HTTP. Loopback is already a
+         trustworthy origin, but declare the exception so App Transport Security
+         cannot interfere with local streaming. -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsLocalNetworking</key>
+      <true/>
+    </dict>
+
+    <key>LSMinimumSystemVersion</key>
+    <string>11.0</string>
+  </dict>
+</plist>

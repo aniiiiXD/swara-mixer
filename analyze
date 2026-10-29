@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# One command: YouTube URL -> isolated vocals -> live pitch player.
+# Fully self-contained in the stemcore venv (torch/demucs/librosa/pygame).
+set -e
+HERE="$(cd "$(dirname "$0")" && pwd)"
+exec "$HERE/packages/core/.venv/bin/stemcore-analyze" "$@"

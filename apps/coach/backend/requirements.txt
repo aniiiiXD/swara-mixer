@@ -1,0 +1,25 @@
+# Tonic API — single backend: analysis (pYIN/scoring) + separation (yt-dlp/Demucs).
+# numpy is pinned <2 for the torch/demucs stack; librosa/scipy run fine there too.
+fastapi
+uvicorn[standard]
+python-multipart
+httpx
+pydantic>=2
+numpy<2
+
+# separation engine
+yt-dlp[default]>=2026.8.19
+demucs>=4.0.0
+torch>=2.6.0
+torchaudio>=2.6.0
+torchcodec>=0.10.0
+soundfile
+
+# analysis (pYIN / scoring)
+librosa==0.11.0
+scipy<1.16
+av==17.1.0
+torchcrepe==0.0.24
+
+# Shared audio-domain implementation used by Coach, Mix, and Pitch adapters.
+-e ../../../packages/core

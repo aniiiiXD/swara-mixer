@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* ── Warm analog-console palette (shared with the Tonic coach) ─────────── */
+@theme {
+  --color-night: #1a1614;
+  --color-night-2: #252220;
+  --color-surface: #2e2a27;
+  --color-border: #3a3530;
+  --color-ink: #f3efe8;
+  --color-ink-dim: #96836a;
+  --color-amber: #d4a574;      /* primary accent — piano glow */
+  --color-amber-deep: #c8956c;
+  --color-ivory: #efe7d8;      /* white keys */
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-dm-sans);
+}
+
+:root {
+  --night: #1a1614;
+  --night-2: #252220;
+  --ink: #f3efe8;
+  --ink-dim: #96836a;
+  --amber: #d4a574;
+  --hairline: rgba(212, 165, 116, 0.16);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--night); }
+
+body {
+  color: var(--ink);
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  /* warm console glow rising from the desk */
+  background:
+    radial-gradient(120% 80% at 50% 118%, rgba(212, 165, 116, 0.12) 0%, rgba(139, 110, 80, 0.05) 32%, transparent 62%),
+    radial-gradient(90% 60% at 82% -12%, rgba(124, 142, 166, 0.05) 0%, transparent 55%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-2) 55%, var(--night) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+::selection { background: rgba(212, 165, 116, 0.28); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #3a3530; border-radius: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot { animation: pulse-dot 1.2s ease-in-out infinite; }

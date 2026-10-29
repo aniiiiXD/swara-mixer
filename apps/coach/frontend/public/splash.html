@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tonic</title>
+    <style>
+      /* Deliberately self-contained: this file is loaded by the Tauri shell
+         before the app bundle exists in memory, and is driven by Rust calling
+         window.tonicStatus(...) — no framework, no JS API, no network. */
+      :root { color-scheme: dark; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background: #12100e;
+        color: #f5efe6;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+      }
+      .mark {
+        font-size: 2.75rem;
+        line-height: 1;
+        color: #e0a02a;
+        animation: breathe 2.4s ease-in-out infinite;
+      }
+      @keyframes breathe {
+        0%, 100% { opacity: 0.45; transform: scale(0.96); }
+        50%      { opacity: 1;    transform: scale(1); }
+      }
+      .name {
+        font-size: 1.35rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        font-weight: 300;
+      }
+      .status {
+        font-size: 0.8rem;
+        color: #a39a88;
+        min-height: 1.2em;
+        text-align: center;
+        max-width: 22rem;
+      }
+      .bar {
+        width: 12rem;
+        height: 2px;
+        background: rgba(245, 239, 230, 0.12);
+        overflow: hidden;
+      }
+      .bar span {
+        display: block;
+        height: 100%;
+        width: 40%;
+        background: #e0a02a;
+        animation: slide 1.4s ease-in-out infinite;
+      }
+      @keyframes slide {
+        0%   { transform: translateX(-100%); }
+        100% { transform: translateX(350%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .mark, .bar span { animation: none; }
+        .mark { opacity: 1; }
+        .bar span { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mark" aria-hidden="true">◒</div>
+    <div class="name">Tonic</div>
+    <div class="bar"><span></span></div>
+    <p class="status" id="status">Starting…</p>
+    <script>
+      window.tonicStatus = function (text) {
+        document.getElementById("status").textContent = text;
+      };
+    </script>
+  </body>
+</html>

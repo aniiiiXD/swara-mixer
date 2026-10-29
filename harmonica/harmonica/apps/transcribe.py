@@ -30,9 +30,10 @@ import wave
 
 import numpy as np
 
-from ..core.harp_map import harp_hole, midi_name, snap_to_harp, tab_token
-from ..audio.pitch import YinPitch, hz_to_midi
-from ..core.synth import HarmonicaSynth
+from stemcore.instruments.harmonica import harp_hole, snap_to_harp, tab_token
+from stemcore.model import midi_to_name as midi_name
+from stemcore.pitch.yin import YinPitch, hz_to_midi
+from stemcore.render.realtime import RealtimeSynth as HarmonicaSynth
 from ..paths import SOUNDFONT, REC_DIR
 
 SR = 44100
@@ -220,7 +221,7 @@ def save_take(y, sr, events, octave_shift):
     wav = save_wav(y, sr, os.path.join(REC_DIR, f"take_{stamp}.wav"))
     txt = save_transcript(events, octave_shift, os.path.join(REC_DIR, f"transcript_{stamp}.txt"))
     png = os.path.join(REC_DIR, f"pitch_{stamp}.png")
-    from ..viz.pitchplot import plot_from_audio
+    from stemcore.viz.pitchplot import plot_from_audio
     times, raw, _ = pitch_track(y, sr)
     smoothed = _median_track(raw, MEDIAN_K)
     plot_from_audio(times, raw, smoothed, events, octave_shift, png, title=f"take {stamp}")

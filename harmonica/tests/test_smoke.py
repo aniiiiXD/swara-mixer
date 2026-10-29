@@ -7,12 +7,12 @@ or directly:                 ./.venv/bin/python tests/test_smoke.py
 
 import numpy as np
 
-from harmonica.audio.pitch import YinPitch, hz_to_midi
-from harmonica.audio import tempo
-from harmonica.ml.notemodel import NoteModel
-from harmonica.ml import seeds
+# engine now comes from the shared stemcore package
+from stemcore.pitch.yin import YinPitch, hz_to_midi
+from stemcore import tempo, seeds
+from stemcore.musicmodel import NoteModel
+from stemcore.instruments.harmonica import snap_to_harp, harp_hole, tab_token
 from harmonica.apps import transcribe as T
-from harmonica.core.harp_map import snap_to_harp, harp_hole, tab_token
 
 
 def _tone(freq, n=2048, sr=44100):

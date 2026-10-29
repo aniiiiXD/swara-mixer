@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+storage/
+assets/*.sf2
+assets/*.sf3

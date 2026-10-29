@@ -1,11 +1,13 @@
 # Dependencies
 node_modules/
 
-# Python
-backend/.venv/
+# Python venvs (engine: .venv, coach: riyaz) + caches
+**/.venv/
+apps/coach/backend/riyaz/
 __pycache__/
 *.pyc
 *.pyo
+.karaoke_cache/
 
 # Storage (runtime data, keep .gitkeep)
 storage/downloads/*
@@ -14,8 +16,15 @@ storage/exports/*
 !storage/**/.gitkeep
 
 # Next.js
-frontend/.next/
-frontend/out/
+**/.next/
+**/out/
+
+# Desktop app (Tauri). The runtime tarball is a ~500MB build artifact rebuilt by
+# `make desktop-runtime`; .build/ is its staging area.
+**/target/
+apps/coach/desktop/src-tauri/runtime/
+apps/coach/desktop/src-tauri/gen/schemas/
+.build/
 
 # Environment
 .env
@@ -35,4 +44,4 @@ Thumbs.db
 .vercel/
 
 # Bun
-frontend/bun.lockb
+**/bun.lockb

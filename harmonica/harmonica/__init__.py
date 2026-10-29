@@ -2,22 +2,25 @@
 harmonica — play a software (and one day robotic) harmonica with your keyboard,
 hand gestures, or your singing voice, then clean it up and generate with ML.
 
-Quick API:
+The audio/ML engine now lives in the shared `stemcore` package; harmonica is a
+thin app on top of it (its own hand-tracking + the pygame/CLI front-ends).
+
+Quick API (re-exported from stemcore for convenience):
 
     from harmonica import HarmonicaSynth, YinPitch, NoteModel
-    from harmonica.core import layout, harp_map
 
 The runnable apps live in `harmonica.apps` (keyboard, gesture_play, sing,
 transcribe, refine) and are exposed as console scripts (see pyproject.toml).
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
-from .core.synth import HarmonicaSynth
-from .core.harp_map import snap_to_harp, harp_hole, tab_token, midi_name
-from .audio.pitch import YinPitch, hz_to_midi
-from .audio.tempo import estimate_tempo, quantize
-from .ml.notemodel import NoteModel
+from stemcore.render.realtime import RealtimeSynth as HarmonicaSynth
+from stemcore.instruments.harmonica import snap_to_harp, harp_hole, tab_token
+from stemcore.model import midi_to_name as midi_name
+from stemcore.pitch.yin import YinPitch, hz_to_midi
+from stemcore.tempo import estimate_tempo, quantize
+from stemcore.musicmodel import NoteModel
 
 __all__ = [
     "HarmonicaSynth",

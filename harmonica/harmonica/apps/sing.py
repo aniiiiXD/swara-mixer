@@ -23,9 +23,10 @@ import numpy as np
 import pygame as pg
 import sounddevice as sd
 
-from ..core.harp_map import NAMES, AVAIL, LO, HI, midi_name, snap_to_harp, harp_hole, tab_token
-from ..audio.pitch import YinPitch, hz_to_midi
-from ..core.synth import HarmonicaSynth
+from stemcore.model import NAMES, midi_name
+from stemcore.instruments.harmonica import AVAIL, LO, HI, snap_to_harp, harp_hole, tab_token
+from stemcore.pitch.yin import YinPitch, hz_to_midi
+from stemcore.render.realtime import RealtimeSynth as HarmonicaSynth
 from ..paths import SOUNDFONT, REC_DIR
 
 # ---- TUNING ----

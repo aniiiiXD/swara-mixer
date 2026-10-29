@@ -1,0 +1,40 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Tonic",
+  "mainBinaryName": "Tonic",
+  "version": "0.1.0",
+  "identifier": "studio.tonic.desktop",
+  "build": {
+    "frontendDist": "../../frontend/out",
+    "devUrl": "http://localhost:3001",
+    "beforeDevCommand": "npm --prefix ../frontend run dev -- --port 3001",
+    "beforeBuildCommand": "npm --prefix ../frontend run build"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["app", "dmg"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": {
+      "runtime/tonic-runtime.tar.gz": "runtime/tonic-runtime.tar.gz"
+    },
+    "macOS": {
+      "minimumSystemVersion": "11.0",
+      "infoPlist": "Info.plist",
+      "entitlements": "Entitlements.plist",
+      "hardenedRuntime": true
+    }
+  }
+}

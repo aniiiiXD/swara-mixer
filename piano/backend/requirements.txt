@@ -1,0 +1,39 @@
+# Piano — YouTube → piano cover. Pipeline: yt-dlp → Demucs de-mud → Pop2Piano → fluidsynth.
+# numpy pinned <2 to match the torch/demucs stack shared across stem-studio.
+fastapi
+uvicorn[standard]
+pydantic>=2
+numpy<2
+
+# audio download
+yt-dlp>=2025.1.0
+
+# setuptools<81 keeps pkg_resources around — resampy (a basic-pitch dep) still
+# imports it, and setuptools 81+ removed it. Python 3.11 venvs don't bundle it.
+setuptools<81
+
+# polyphonic transcription (audio → MIDI). basic-pitch picks an inference
+# backend from what's installed; onnxruntime is the lightest and avoids the
+# heavy TensorFlow install. On Apple Silicon you can swap in coremltools.
+basic-pitch>=0.4.0
+onnxruntime
+pretty_midi
+
+# pop2piano brain (default) — musical piano cover: audio → beat-aligned piano
+# MIDI with real dynamics. Pretrained on HuggingFace; weights download on first
+# run. essentia does the beat tracking pop2piano generates against.
+torch>=2.6.0
+transformers>=4.40.0
+essentia
+
+# de-mud step (Demucs). Pop2Piano transcribes the WHOLE mix, so bass + drums get
+# crammed onto the low keys as muddy chords + noise. Separating first and keeping
+# only vocals + melodic instruments (dropping drums/bass) gives it a clean input.
+# torchaudio 2.11 delegates file I/O to torchcodec, so that's required too.
+demucs>=4.0.0
+torchaudio
+torchcodec
+soundfile
+
+# Shared ingest/separation and runtime primitives.
+-e ../../packages/core

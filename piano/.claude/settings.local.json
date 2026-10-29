@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/anixd/Documents/self/stem-studio/**)",
+      "Bash(ls -la apps/coach/backend/app/services/)",
+      "Bash(cat apps/coach/backend/requirements.txt)",
+      "Bash(python3.11 -m venv .venv)",
+      "Bash(./.venv/bin/python -m pip install --upgrade pip -q)",
+      "Bash(./.venv/bin/python --version)",
+      "Bash(echo \"venv ready: $\\(./.venv/bin/python --version\\)\")",
+      "Bash(./.venv/bin/python -m pip install -r requirements.txt)",
+      "Bash(echo \"EXIT=$?\")",
+      "Read(//private/tmp/**)",
+      "Bash(./.venv/bin/python -c ' *)",
+      "Bash(./.venv/bin/python -m pip install -q setuptools)",
+      "Bash(./.venv/bin/python -c \"import setuptools; print\\('setuptools', setuptools.__version__\\)\")",
+      "Bash(./.venv/bin/python -c \"import pkg_resources; print\\('pkg_resources OK'\\)\")",
+      "Bash(./.venv/bin/python -m pip install -q \"setuptools<81\")",
+      "Bash(./.venv/bin/python -c \"import pkg_resources; print\\('pkg_resources OK now'\\)\")",
+      "Bash(./.venv/bin/python *)",
+      "Bash(brew list *)",
+      "Bash(brew install *)",
+      "Bash(npm --version)",
+      "Bash(echo \"node $\\(node --version\\), npm $\\(npm --version\\)\")",
+      "Bash(CI=1 npx --yes create-next-app@16.2.9 frontend --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --yes)",
+      "Bash(node -e \"console.log\\(require\\('next/package.json'\\).version\\)\")",
+      "Bash(npm run *)",
+      "Bash(break)",
+      "Bash(echo \"current torch: $\\(./.venv/bin/python -c 'import torch; print\\(torch.__version__\\)' \\)\")",
+      "Bash(./.venv/bin/pip install *)",
+      "Bash(PATH=/opt/homebrew/bin:__TRACKED_VAR__ ./.venv/bin/python /private/tmp/claude-501/-Users-anixd-Documents-self-stem-studio-piano/f3274010-37d2-4103-9a7b-1f35083a5b7e/scratchpad/compare_demucs.py)",
+      "Bash(PYTHONPATH=/Users/anixd/Documents/self/stem-studio/piano/backend PATH=/opt/homebrew/bin:__TRACKED_VAR__ ./.venv/bin/python /private/tmp/claude-501/-Users-anixd-Documents-self-stem-studio-piano/f3274010-37d2-4103-9a7b-1f35083a5b7e/scratchpad/compare_demucs.py)",
+      "Bash(grep -vE \"^\\\\s*$\")",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(PATH=/opt/homebrew/bin:__TRACKED_VAR__ ./.venv/bin/python -c ' *)",
+      "Bash(pkill -f \"uvicorn app.main\")",
+      "Bash(PATH=\"/opt/homebrew/bin:$PATH\" ./.venv/bin/uvicorn app.main:app *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:3003)"
+    ]
+  }
+}

@@ -24,8 +24,8 @@ import os
 
 import pygame as pg
 
-from ..core import layout
-from ..core.synth import HarmonicaSynth
+from stemcore.instruments import harmonica as layout
+from stemcore.render.realtime import RealtimeSynth as HarmonicaSynth
 from ..paths import SOUNDFONT
 
 # key -> (hole index 0..9, draw?)  — columns line up physically on a QWERTY board

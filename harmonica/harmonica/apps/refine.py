@@ -28,13 +28,14 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from ..ml import seeds
-from ..audio import tempo as tempo_mod
+from stemcore import seeds
+from stemcore import tempo as tempo_mod
 from . import transcribe as T
-from ..viz import pitchplot as pp
-from ..core.harp_map import harp_hole, midi_name, snap_to_harp, tab_token
-from ..ml.notemodel import NoteModel
-from ..core.synth import HarmonicaSynth
+from stemcore.viz import pitchplot as pp
+from stemcore.instruments.harmonica import harp_hole, snap_to_harp, tab_token
+from stemcore.model import midi_to_name as midi_name
+from stemcore.musicmodel import NoteModel
+from stemcore.render.realtime import RealtimeSynth as HarmonicaSynth
 from ..paths import SOUNDFONT, REC_DIR
 
 OCTAVE_SHIFT = 1

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pitch Studio</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎵 Pitch Studio</h1>
+    <div class="tabs">
+      <button id="tab-mix" class="tab on">🎛 Mix</button>
+      <button id="tab-studio" class="tab">🎤 Studio</button>
+    </div>
+  </header>
+
+  <section class="controls">
+    <input id="url" type="text" placeholder="YouTube URL…" spellcheck="false" />
+    <button id="open">Open</button>
+  </section>
+
+  <section id="status" class="status hidden">
+    <div class="spinner"></div><span id="phase">…</span>
+  </section>
+
+  <!-- MIX (DAW) -->
+  <section id="mix" class="daw hidden">
+    <div class="transport">
+      <button id="m-play" class="tbtn">▶</button>
+      <button id="m-stop" class="tbtn">⏹</button>
+      <button id="m-loop" class="tbtn on">↻</button>
+      <span id="m-time" class="time">0.0 / 0s</span>
+      <span class="spacer"></span>
+      <span class="hint">click a lane to seek · M mute · S solo</span>
+    </div>
+    <div id="ruler-wrap"><canvas id="ruler"></canvas></div>
+    <div id="tracks" class="tracks"><div id="m-playhead" class="playhead"></div></div>
+  </section>
+
+  <!-- STUDIO (karaoke / learning) -->
+  <section id="studio" class="studio hidden">
+    <div class="transport">
+      <button id="s-play" class="tbtn">▶</button>
+      <button id="s-stop" class="tbtn">⏹</button>
+      <button id="s-loop" class="tbtn on">↻</button>
+      <button id="s-guide" class="tbtn">🎙 guide</button>
+      <span id="s-note" class="note">–</span>
+      <span id="s-time" class="time">0.0 / 0s</span>
+      <span class="spacer"></span>
+      <span class="hint">sing the line · Up/Down zoom</span>
+    </div>
+    <canvas id="pcanvas"></canvas>
+  </section>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
